@@ -32,6 +32,7 @@ class AvalancheAPI
     private function curl($route, $data = null)
     {
         $url = $this->baseURL . "/" . $this->version . "/" . $route;
+
         // create curl resource 
         $ch = curl_init(); 
         curl_setopt($ch, CURLOPT_URL, $url); 
@@ -45,7 +46,6 @@ class AvalancheAPI
             $postString = http_build_query($data);
             curl_setopt($ch,CURLOPT_POST, count($data));
             curl_setopt($ch,CURLOPT_POSTFIELDS, $postString);
-            var_dump($postString);
         }
 
         // $output contains the output string 
@@ -58,13 +58,16 @@ class AvalancheAPI
 
     /**
     *   Description: Get's the embedded map for the given avalanche center including the zones and danger ratings
-    *   @param - $avalancheCenterID - the abbreviation for the avalanche center
+    *   @param - $options - an array of options as key/value pairs
+    *       avalanche_center = abbreviation ex. CAIC
+    *       basemap_color = 'bw', 'lightColor', 'color'
+    *       example: ['avalanche_center' => 'CAIC', 'basemap_color' => 'lightColor']
     *   @return $output - a google map in html/javascript
     */
-    public function getMap($avalancheCenterID) 
+    public function getMap($options) 
     {
         // $output contains the output string 
-        return $this->curl("forecast/get-map/$avalancheCenterID"); 
+        return $this->curl("forecast/get-embedded-map/", $options); 
     }
 
 }
