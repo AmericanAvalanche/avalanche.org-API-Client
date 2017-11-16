@@ -40,7 +40,7 @@ class AvalancheAPI
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
 
-        //Post data
+        // post data
         if($data)
         {
             $postString = http_build_query($data);
@@ -58,16 +58,27 @@ class AvalancheAPI
 
     /**
     *   Description: Get's the embedded map for the given avalanche center including the zones and danger ratings
-    *   @param - $options - an array of options as key/value pairs
-    *       avalanche_center = abbreviation ex. CAIC
+    *   @param - $centerID the abbreviation ex. CAIC
+    *   @param - $options - (optional) an array of options as key/value pairs
     *       basemap_color = 'bw', 'lightColor', 'color'
-    *       example: ['avalanche_center' => 'CAIC', 'basemap_color' => 'lightColor']
+    *       zoom_level = int 4 - 12
+    *       map_height = int in pixels
+    *       danger_scale = 'top', 'bottom', 'none' (defaults to none)
+    *       example: ['basemap_color' => 'lightColor', 'zoom_level'=>8, 'danger_scale' => 'top', 'map_height' => 500]
     *   @return $output - a google map in html/javascript
     */
-    public function getMap($options) 
+    public function getMap($centerID, $options = null) 
     {
-        // $output contains the output string 
-        return $this->curl("forecast/get-embedded-map/", $options); 
+        //Avalanche Center ID
+        $post = ['avalanche_center' => $centerID]; 
+
+        //Optional map configurations
+        if($options)
+        {
+            $post['options'] = $options;
+        }
+        // $output from API call
+        return $this->curl("forecast/get-embedded-map/", $post); 
     }
 
 }
