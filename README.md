@@ -32,3 +32,16 @@ $map = $api->getMap('BTAC', [
 ]);
     
 ```
+
+<h3>Updating your forecast:</h3>
+<p>Note: you must have already coordinated with avalanche.org and setup the necessary data sharing files in order for this to work.</p>
+
+```php
+<?php
+
+require_once 'avalanche.org-API-Client/AvalancheAPI.php';
+//Out message availible as to success
+$api->updateForecast('GNFAC');
+    
+```
+
