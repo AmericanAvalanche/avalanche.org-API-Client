@@ -81,4 +81,17 @@ class AvalancheAPI
         return $this->curl("forecast/get-embedded-map/", $post); 
     }
 
+    /**
+    *   Description: Updates the forecast on avalanche.org for all zones 
+    *   affiliated with the avalnche center. Used for the national map 
+    *   and the embedded map. Used for both creating and updating
+    *   @param - $centerID the abbreviation ex. CAIC
+    *   @return $output - the results of the import
+    */
+    public function updateForecast($centerID) 
+    {
+        // $output from API call
+        return json_decode($this->curl("forecast/import-data/$centerID")); 
+    }
+
 }
