@@ -40,7 +40,7 @@ $map = $api->getMap('BTAC', [
 <?php
 
 require_once 'avalanche.org-API-Client/AvalancheAPI.php';
-//Out message availible as to success
+//Output message availible as to success
 $api->updateForecast('GNFAC');
     
 ```
