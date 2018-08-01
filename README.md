@@ -72,7 +72,7 @@ $api->updateForecast();
 
 require_once 'avalanche.org-API-Client/AvalancheAPI.php';
 $api = new AvalancheAPI();
-//Output message availible as to success
+//Get the weather maps view, then echo where desired
 $wxMap = $api->getWeatherMap();
     
 ```
