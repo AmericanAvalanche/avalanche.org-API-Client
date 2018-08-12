@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/vendor/fontawesome-free-5.2.0-web/css/all.min.css" />
 <link rel="stylesheet" type="text/css" href="https://api.snowobs.com/css/style_weather.css" />
-<link rel="stylesheet" type="text/css" href="https://api.snowobs.com/css/weatherMap.css" />
+<link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/css/weatherMap.css" />
 <link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/css/weatherMapMaterial.css" />
 <script type="text/javascript" src="https://api.snowobs.com/javascript/jqplot-wind/src/jquery.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYlNqVp8DF70mOrzuoRm7XKtBEb-xeNco"></script>
@@ -27,15 +27,30 @@
             <div class="dropDownOptions" id="mapOptionsMenu"></div>
         </div>
         <span class = "sidenav-open" onclick="openNav()">&#9776;</span>
+        <div id="so-legend"><div id = "so-legend-inner"></div></div>
         <div id="map">
-        <div id="map-canvas"></div>
-        <div id="legend"></div>
-        <script type='text/javascript'>
-
-            let token = "<?= $params['token']; ?>";
-            buildMap(43.7794075, -114.69044495, 9, "<?= $params['center_id']; ?>", false);
-        
-        </script>    
+        <div id="map-canvas"></div>   
       
     </div>	
 </div>
+
+<div id = 'so-wx-chart-modal' class = 'so-modal-background'>
+    <div class = 'so-modal drop-shadow'>
+        <div class = 'so-modal-close'><a href="javascript:void(0)" class="closebtn" id = 'so-modal-close-button'>&times;</a></div>
+        <div class = 'so-modal-header'>
+             
+        </div>
+        <div class = 'so-modal-body'>
+        </div>
+    </div>
+</div>
+
+<script type='text/javascript'>
+
+    const token = "<?= $params['token']; ?>";
+
+    let map = new soMap();
+    map.buildMap(43.7794075, -114.69044495, 9, "<?= $params['center_id']; ?>", false, token)
+
+</script> 
+
