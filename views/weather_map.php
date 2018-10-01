@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/vendor/fontawesome-free-5.2.0-web/css/all.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/vendor/fontawesome-free-5.2.0-web/css/all.min.css" />
 <link rel="stylesheet" type="text/css" href="https://api.snowobs.com/css/style_weather.css" />
 <link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/css/weatherMap.css" />
 <link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/css/weatherMapMaterial.css" />
@@ -17,7 +17,10 @@
 <script type="text/javascript" src="https://api.snowobs.com/javascript/spin.js"></script>
 <script type="text/javascript" src="https://api.snowobs.com/javascript/markerwithlabel.js"></script>
 <script type="text/javascript" src="https://api.snowobs.com/javascript/oms.min.js"></script>
-<script type="text/javascript" src="https://api.snowobs.com/javascript/ajaxSubmit.js"></script>
+<script type="text/javascript" src="https://api.snowobs.com/javascript/ajaxSubmit.js"></script> -->
+
+<script type="text/javascript" src="<?= $params['wx_base_url']; ?>/dist/js/loader.js" data-url = "<?= $params['wx_base_url']; ?>"></script>
+<script type="text/javascript" src="<?= $params['wx_base_url']; ?>/dist/js/css_loader.js" data-url = "<?= $params['wx_base_url']; ?>"></script>
 
 <div id="map_content">
 	<div id="map-container" class="column">
@@ -47,10 +50,8 @@
 
 <script type='text/javascript'>
 
-    const token = "<?= $params['token']; ?>";
-
-    let map = new soMap();
-    map.buildMap(43.7794075, -114.69044495, 9, "<?= $params['center_id']; ?>", false, token)
+    const soToken = "<?= $params['token']; ?>";
+    const soAvyCenterId = "<?= $params['center_id']; ?>";
 
 </script> 
 

@@ -12,19 +12,17 @@ class AvalancheAPI
 
     public function __construct($baseURL = null)
     {
-        if(!empty($baseURL))
-        {
-            $this->baseURL = $baseURL;
-        }
-        else
-        {
-            $this->baseURL = "https://api.avalanche.org";
-        }
+        $apiDefaults = [
+            "avy_org" => "https://api.avalanche.org",
+            "wx_maps" => "https://cdn.snowobs.com"
+        ];
 
+        $this->baseURL = (!empty($baseURL)) ? $baseURL : $apiDefaults['avy_org'];
         $config = require __DIR__ . '/config.php';
         $this->centerID = $config['center_id'];
         $this->token = $config['token'];
         $this->version = "v1";
+        $this->wxBaseUrl = (isset($config['wx_base_url'])) ? $config['wx_base_url'] : $apiDefaults['wx_maps'];
     }
 
     /**
@@ -121,26 +119,14 @@ class AvalancheAPI
     *   @param - $centerID the abbreviation ex. CAIC
     *   @return $output - the results of the import
     */
-    public function getWeatherCharts($centerID) 
-    {
-        // Script tag for js
-        $chartTemplate = file_get_contents( __DIR__ . DIRECTORY_SEPARATOR . 'views/weather_charts.php');
-        return $chartTemplate;
-    }
-
-
-    /**
-    *   Description: Weather charts and maps - registeres necessary assets and components 
-    *   @param - $centerID the abbreviation ex. CAIC
-    *   @return $output - the results of the import
-    */
     public function getWeatherMap() 
     {
         return $this->renderView(
             __DIR__ . DIRECTORY_SEPARATOR . 'views/weather_map.php',
             [
                 'center_id' => $this->centerID, 
-                'token' => $this->token
+                'token' => $this->token,
+                'wx_base_url' => $this->wxBaseUrl
             ]
         );
     }
