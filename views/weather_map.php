@@ -19,20 +19,21 @@
 <script type="text/javascript" src="https://api.snowobs.com/javascript/oms.min.js"></script>
 <script type="text/javascript" src="https://api.snowobs.com/javascript/ajaxSubmit.js"></script> -->
 
-<script type="text/javascript" src="<?= $params['wx_base_url']; ?>/dist/js/loader.js" data-url = "<?= $params['wx_base_url']; ?>"></script>
+<!-- <script type="text/javascript" src="<?= $params['wx_base_url']; ?>/dist/js/loader.js" data-url = "<?= $params['wx_base_url']; ?>"></script> -->
 <script type="text/javascript" src="<?= $params['wx_base_url']; ?>/dist/js/css_loader.js" data-url = "<?= $params['wx_base_url']; ?>"></script>
-
-<div id="map_content">
-	<div id="map-container" class="column">
-        <div id="mySidenav" class="sidenav">
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYlNqVp8DF70mOrzuoRm7XKtBEb-xeNco"></script>
+<script type="text/javascript" src="<?= $params['wx_base_url']; ?>/dist/js/scripts.min.js" data-url = "<?= $params['wx_base_url']; ?>"></script>
+<div id="so-map_content">
+	<div id="so-map-container" class="column">
+        <div id="so-mySidenav" class="so-sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <div class="mapLabels" id="mapLabelMenu"></div>
-            <div class="dropDownOptions" id="mapOptionsMenu"></div>
+            <div class="so-mapLabels" id="so-mapLabelMenu"></div>
+            <div class="so-dropDownOptions" id="so-mapOptionsMenu"></div>
         </div>
-        <span class = "sidenav-open" onclick="openNav()">&#9776;</span>
+        <span class = "so-sidenav-open" onclick="openNav()">&#9776;</span>
         <div id="so-legend"><div id = "so-legend-inner"></div></div>
-        <div id="map">
-        <div id="map-canvas"></div>   
+        <div id="so-map">
+        <div id="so-map-canvas"></div>   
       
     </div>	
 </div>
@@ -52,6 +53,9 @@
 
     const soToken = "<?= $params['token']; ?>";
     const soAvyCenterId = "<?= $params['center_id']; ?>";
+
+        let soMapObject = new soMap();
+        soMapObject.buildMap(43.7794075, -114.69044495, 9, soAvyCenterId, false, soToken);
 
 </script> 
 
