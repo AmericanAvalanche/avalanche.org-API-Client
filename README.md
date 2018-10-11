@@ -33,8 +33,11 @@ $map = $api->getMap('BTAC', [
     
 ```
 basemap_color: bw, lightColor, color
+
 zoom_level: uses the slippy maps zoom scale: https://wiki.openstreetmap.org/wiki/Zoom_levels
+
 danger_scale: bottom, top
+
 map_height: number, in pixels
 
 <h3>Updating your forecast:</h3>
