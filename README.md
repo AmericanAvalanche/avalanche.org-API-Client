@@ -40,6 +40,12 @@ $map = $api->getMap();
     
 ```
 
+```html
+<!-- Now echo $map variable into the containing div in which the map should be displayed -->
+<div class='map-div'><?= $map; ?></div>
+
+```
+
 Optional customizations
 
 ```php
@@ -82,5 +88,11 @@ $api = new AvalancheAPI();
 //Get the weather maps view, then echo where desired
 $wxMap = $api->getWeatherMap();
     
+```
+
+```html
+<!-- Now echo $wxMap variable into the containing div in which the map should be displayed -->
+<div class='map-div'><?= $wxMap; ?></div>
+
 ```
 
