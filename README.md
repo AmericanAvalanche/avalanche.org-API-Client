@@ -1,9 +1,16 @@
 # avalanche.org-API-Client
 A client to interact with the avalanche.org API. The only requirement is that your server has CURL and is running php version 5.6+<br>
 
+Current functionality includes:
+<ul>
+<li>The forecast map</li>
+<li>Weather products - map, table, time series</li>
+</ul>
+
+
 <h3>Configuration:</h3>
 
-Create a configuration file in the root of this project directory, called "config.php". It should contain the following
+Create a configuration file in the root of this project directory, called "config.php". It should contain the following (contact the National Avalanche Center for token access)
 
 ```php
 <?php
