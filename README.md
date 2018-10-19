@@ -3,7 +3,7 @@ A client to interact with the avalanche.org API. The only requirement is that yo
 
 Current functionality includes:
 <ul>
-<li>The forecast map</li>
+<li>The forecast map - your avalanche center region with zones and danger ratings</li>
 <li>Weather products - map, table, time series</li>
 </ul>
 
@@ -25,7 +25,7 @@ return [
 ```
 
 
-<h3>Embedded map:</h3>
+<h3>Forecast map:</h3>
 
 Default usage
 
@@ -71,8 +71,8 @@ $api->updateForecast();
     
 ```
 
-<h3>Weather Maps:</h3>
-<p>Note: you must have already coordinated with avalanche.org to obtain access to the weather maps API and received a token.</p>
+<h3>Weather Products:</h3>
+<p>Note: you must have already coordinated with the National Avalanche Center to obtain access to the weather maps API and received a token.</p>
 
 ```php
 <?php
