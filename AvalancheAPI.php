@@ -10,15 +10,15 @@ class AvalancheAPI
     private $centerID;
     private $token;
 
-    public function __construct($baseURL = null)
+    public function __construct()
     {
         $apiDefaults = [
             "avy_org" => "https://api.avalanche.org",
             "wx_maps" => "https://cdn.snowobs.com"
         ];
-
-        $this->baseURL = (!empty($baseURL)) ? $baseURL : $apiDefaults['avy_org'];
+        
         $config = require __DIR__ . '/config.php';
+        $this->baseURL = (isset($config['avy_org'])) ? $config['avy_org'] : $apiDefaults['wx_maps'];
         $this->centerID = $config['center_id'];
         $this->token = $config['token'];
         $this->version = "v1";
@@ -69,7 +69,7 @@ class AvalancheAPI
     private function renderView($path, $params)
     {
         ob_start();
-            include __DIR__ . DIRECTORY_SEPARATOR . 'views/weather_map.php';
+            include $path;
             $content = ob_get_contents();
         ob_end_clean();
 
@@ -86,18 +86,16 @@ class AvalancheAPI
     *       example: ['basemap_color' => 'lightColor', 'zoom_level'=>8, 'danger_scale' => 'top', 'map_height' => 500]
     *   @return $output - a google map in html/javascript
     */
-    public function getMap($options = null) 
+    public function getMap($options = []) 
     {
-        //Avalanche Center ID
-        $post = ['avalanche_center' => $this->centerID]; 
-
-        //Optional map configurations
-        if($options)
-        {
-            $post['options'] = $options;
-        }
-        // $output from API call
-        return $this->curl("forecast/get-embedded-map/", $post); 
+        return $this->renderView(
+            __DIR__ . DIRECTORY_SEPARATOR . 'views/forecast_map.php',
+            [
+                'center_id' => $this->centerID,
+                'base_url' => $this->baseURL,
+                'options' => $options
+            ]
+        ); 
     }
 
     /**

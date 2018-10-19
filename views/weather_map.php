@@ -1,61 +1,41 @@
 
-<!-- <link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/vendor/fontawesome-free-5.2.0-web/css/all.min.css" />
-<link rel="stylesheet" type="text/css" href="https://api.snowobs.com/css/style_weather.css" />
-<link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/css/weatherMap.css" />
-<link rel="stylesheet" type="text/css" href="http://snowobs-api.localhost/css/weatherMapMaterial.css" />
-<script type="text/javascript" src="https://api.snowobs.com/javascript/jqplot-wind/src/jquery.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYlNqVp8DF70mOrzuoRm7XKtBEb-xeNco"></script>
-<link rel="stylesheet" href="https://api.snowobs.com/javascript/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-<script type="text/javascript" src="https://api.snowobs.com/javascript/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
-<link rel="stylesheet" href="https://api.snowobs.com/javascript/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
-<script type="text/javascript" src="https://api.snowobs.com/javascript/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-<script type="text/javascript" src="https://api.snowobs.com/javascript/moment-js/moment.min.js"></script>
-<script type="text/javascript" src="https://api.snowobs.com/javascript/moment-js/moment-timezone-2010-2020.min.js"></script>
-<script type="text/javascript" src="http://snowobs-api.localhost/javascript/mapCurrentStations.js"></script>
-<script type="text/javascript" src="http://snowobs-api.localhost/javascript/sideNavigation.js"></script>
-<script type="text/javascript" src="https://api.snowobs.com/javascript/mapWebCams.js"></script>
-<script type="text/javascript" src="https://api.snowobs.com/javascript/spin.js"></script>
-<script type="text/javascript" src="https://api.snowobs.com/javascript/markerwithlabel.js"></script>
-<script type="text/javascript" src="https://api.snowobs.com/javascript/oms.min.js"></script>
-<script type="text/javascript" src="https://api.snowobs.com/javascript/ajaxSubmit.js"></script> -->
+<!-- SnowObs API to load all necessary js/css -->
+<script type="text/javascript" src="<?= $params['wx_base_url']; ?>/js/css_loader.js" data-url = "<?= $params['wx_base_url']; ?>"></script>
+<script type="text/javascript" src="<?= $params['wx_base_url']; ?>/js/loader.js" data-url = "<?= $params['wx_base_url']; ?>"></script>
 
-<!-- <script type="text/javascript" src="<?= $params['wx_base_url']; ?>/dist/js/loader.js" data-url = "<?= $params['wx_base_url']; ?>"></script> -->
-<script type="text/javascript" src="<?= $params['wx_base_url']; ?>/dist/js/css_loader.js" data-url = "<?= $params['wx_base_url']; ?>"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYlNqVp8DF70mOrzuoRm7XKtBEb-xeNco"></script>
-<script type="text/javascript" src="<?= $params['wx_base_url']; ?>/dist/js/scripts.min.js" data-url = "<?= $params['wx_base_url']; ?>"></script>
-<div id="so-map_content">
-	<div id="so-map-container" class="column">
-        <div id="so-mySidenav" class="so-sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <div class="so-mapLabels" id="so-mapLabelMenu"></div>
-            <div class="so-dropDownOptions" id="so-mapOptionsMenu"></div>
+<button type="button" class="so btn btn-raised btn-info" id = "so-table-toggle" data-view = "table">Table View</button>
+<div class='so-map' id="so-map-content">
+	<div id="so-map-container" class="so-column">
+        <div id="mySidenav" class="so-sidenav">
+            <a href="javascript:void(0)" class="so-closebtn" onclick="closeNav()">&times;</a>
+            <div class="so-mapLabels" id="mapLabelMenu"></div>
+            <div class="so-dropDownOptions" id="mapOptionsMenu"></div>
         </div>
         <span class = "so-sidenav-open" onclick="openNav()">&#9776;</span>
         <div id="so-legend"><div id = "so-legend-inner"></div></div>
         <div id="so-map">
-        <div id="so-map-canvas"></div>   
-      
-    </div>	
-</div>
-
-<div id = 'so-wx-chart-modal' class = 'so-modal-background'>
-    <div class = 'so-modal drop-shadow'>
-        <div class = 'so-modal-close'><a href="javascript:void(0)" class="closebtn" id = 'so-modal-close-button'>&times;</a></div>
-        <div class = 'so-modal-header'>
-             
-        </div>
-        <div class = 'so-modal-body'>
+            <div id="so-map-canvas"></div>
         </div>
     </div>
 </div>
 
+<div id = "so-table-content" class = "so-view-hide"></div>
+
+<div id = 'so-wx-chart-modal' class = 'so-modal-background'>
+	<div class = 'so-modal drop-shadow'>
+		<div class = 'so-modal-close'><a href="javascript:void(0)" class="closebtn" id = 'so-modal-close-button'>&times;</a></div>
+		<div class = 'so-modal-header'></div>
+		<div class = 'so-modal-body'></div>
+	</div>
+</div>
+
 <script type='text/javascript'>
 
-    const soToken = "<?= $params['token']; ?>";
-    const soAvyCenterId = "<?= $params['center_id']; ?>";
+    const token = "<?= $params['token']; ?>";
+		var map;
+		window.onload = function () {
+			map = new soMap();
+			map.buildMap(43.7794075, -114.69044495, 9, "<?= $params['center_id']; ?>", false, token);
+		};
 
-        let soMapObject = new soMap();
-        soMapObject.buildMap(43.7794075, -114.69044495, 9, soAvyCenterId, false, soToken);
-
-</script> 
-
+</script>
