@@ -7,19 +7,22 @@ class AvalancheAPI
 {
     private $baseURL;
     private $version;
+    private $centerID;
+    private $token;
 
-    public function __construct($baseURL = null)
+    public function __construct()
     {
-        if(!empty($baseURL))
-        {
-            $this->baseURL = $baseURL;
-        }
-        else
-        {
-            $this->baseURL = "https://api.avalanche.org";
-        }
-
+        $apiDefaults = [
+            "avy_org" => "https://api.avalanche.org",
+            "wx_maps" => "https://cdn.snowobs.com"
+        ];
+        
+        $config = require __DIR__ . '/config.php';
+        $this->baseURL = (isset($config['avy_org'])) ? $config['avy_org'] : $apiDefaults['wx_maps'];
+        $this->centerID = $config['center_id'];
+        $this->token = $config['token'];
         $this->version = "v1";
+        $this->wxBaseUrl = (isset($config['wx_base_url'])) ? $config['wx_base_url'] : $apiDefaults['wx_maps'];
     }
 
     /**
@@ -57,8 +60,24 @@ class AvalancheAPI
     }
 
     /**
+    *   Description: Renders a view - returns as string
+    *   @param - $path to the view file
+    *   @param - $params - any variables to be used within the view file. They must be 
+    *   referenced within the $params array
+    *   @return $output - the results of the import
+    */
+    private function renderView($path, $params)
+    {
+        ob_start();
+            include $path;
+            $content = ob_get_contents();
+        ob_end_clean();
+
+        return $content;
+    }
+
+    /**
     *   Description: Get's the embedded map for the given avalanche center including the zones and danger ratings
-    *   @param - $centerID the abbreviation ex. CAIC
     *   @param - $options - (optional) an array of options as key/value pairs
     *       basemap_color = 'bw', 'lightColor', 'color'
     *       zoom_level = int 4 - 12
@@ -67,18 +86,16 @@ class AvalancheAPI
     *       example: ['basemap_color' => 'lightColor', 'zoom_level'=>8, 'danger_scale' => 'top', 'map_height' => 500]
     *   @return $output - a google map in html/javascript
     */
-    public function getMap($centerID, $options = null) 
+    public function getMap($options = []) 
     {
-        //Avalanche Center ID
-        $post = ['avalanche_center' => $centerID]; 
-
-        //Optional map configurations
-        if($options)
-        {
-            $post['options'] = $options;
-        }
-        // $output from API call
-        return $this->curl("forecast/get-embedded-map/", $post); 
+        return $this->renderView(
+            __DIR__ . DIRECTORY_SEPARATOR . 'views/forecast_map.php',
+            [
+                'center_id' => $this->centerID,
+                'base_url' => $this->baseURL,
+                'options' => $options
+            ]
+        ); 
     }
 
     /**
@@ -88,10 +105,30 @@ class AvalancheAPI
     *   @param - $centerID the abbreviation ex. CAIC
     *   @return $output - the results of the import
     */
-    public function updateForecast($centerID) 
+    public function updateForecast() 
     {
+        $centerId = $this->center_id;
         // $output from API call
         return json_decode($this->curl("forecast/import-data/$centerID")); 
     }
+
+    /**
+    *   Description: Weather charts and maps - registeres necessary assets and components 
+    *   @param - $centerID the abbreviation ex. CAIC
+    *   @return $output - the results of the import
+    */
+    public function getWeatherMap() 
+    {
+        return $this->renderView(
+            __DIR__ . DIRECTORY_SEPARATOR . 'views/weather_map.php',
+            [
+                'center_id' => $this->centerID, 
+                'token' => $this->token,
+                'wx_base_url' => $this->wxBaseUrl
+            ]
+        );
+    }
+
+
 
 }
