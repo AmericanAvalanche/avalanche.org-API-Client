@@ -114,7 +114,6 @@ class AvalancheAPI
 
     /**
     *   Description: Weather charts and maps - registeres necessary assets and components 
-    *   @param - $centerID the abbreviation ex. CAIC
     *   @return $output - the results of the import
     */
     public function getWeatherMap() 

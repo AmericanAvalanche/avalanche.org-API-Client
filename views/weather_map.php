@@ -32,10 +32,10 @@
 <script type='text/javascript'>
 
     const token = "<?= $params['token']; ?>";
-		var map;
-		window.onload = function () {
-			map = new soMap();
-			map.buildMap(43.7794075, -114.69044495, 9, "<?= $params['center_id']; ?>", false, token);
-		};
+    var map;
+    window.onload = function () {
+        map = new soMap();
+        map.buildMap(token, false);
+    };
 
 </script>
