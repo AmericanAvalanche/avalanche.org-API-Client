@@ -14,7 +14,7 @@ class AvalancheAPI
     {
         $apiDefaults = [
             "avy_org" => "https://api.avalanche.org",
-            "wx_maps" => "https://cdn.snowobs.com"
+            "wx_maps" => "https://cdn.snowobs.com/nac"
         ];
         
         $config = require __DIR__ . '/config.php';
@@ -114,7 +114,6 @@ class AvalancheAPI
 
     /**
     *   Description: Weather charts and maps - registeres necessary assets and components 
-    *   @param - $centerID the abbreviation ex. CAIC
     *   @return $output - the results of the import
     */
     public function getWeatherMap() 
