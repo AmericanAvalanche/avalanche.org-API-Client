@@ -18,7 +18,7 @@ class AvalancheAPI
         ];
         
         $config = require __DIR__ . '/config.php';
-        $this->baseURL = (isset($config['avy_org'])) ? $config['avy_org'] : $apiDefaults['wx_maps'];
+        $this->baseURL = (isset($config['avy_org'])) ? $config['avy_org'] : $apiDefaults['avy_org'];
         $this->centerID = $config['center_id'];
         $this->token = $config['token'];
         $this->version = "v1";
