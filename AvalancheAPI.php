@@ -11,7 +11,7 @@ class AvalancheAPI
     private $token;
 
     // AvalancheAPI Client version
-    public $version = '0.2.0';
+    public $version = '0.2.1';
 
     public function __construct()
     {
