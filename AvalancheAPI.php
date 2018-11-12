@@ -16,7 +16,8 @@ class AvalancheAPI
             "avy_org" => "https://api.avalanche.org",
             "wx_maps" => "https://cdn.snowobs.com/nac-prod",
             "station_group_tables" => "https://cdn.snowobs.com/group_tables",
-            "station_group_tables_config" => false
+            "station_group_tables_config" => false,
+            "custom_external_modal_links" => false
         ];
 
         $config = require __DIR__ . '/config.php';
@@ -27,6 +28,7 @@ class AvalancheAPI
         $this->wxBaseUrl = (isset($config['wx_base_url'])) ? $config['wx_base_url'] : $apiDefaults['wx_maps'];
         $this->tableBaseUrl = (isset($config['station_group_tables'])) ? $config['station_group_tables'] : $apiDefaults['station_group_tables'];
         $this->groupTablesConfig = (isset($config['station_group_tables_config'])) ? $config['station_group_tables_config'] : $apiDefaults['station_group_tables_config'];
+        $this->externalModalLinks = (isset($config['custom_external_modal_links'])) ? $config['custom_external_modal_links'] : $apiDefaults['custom_external_modal_links'];
     }
 
     /**
@@ -127,7 +129,8 @@ class AvalancheAPI
             [
                 'center_id' => $this->centerID,
                 'token' => $this->token,
-                'wx_base_url' => $this->wxBaseUrl
+                'wx_base_url' => $this->wxBaseUrl,
+                'external_modal_links' => $this->externalModalLinks
             ]
         );
     }
