@@ -15,7 +15,7 @@ class AvalancheAPI
         $apiDefaults = [
             "avy_org" => "https://api.avalanche.org",
             "wx_maps" => "https://cdn.snowobs.com/nac-prod",
-            "station_group_tables" => "https://cdn.snowobs.com/group_tables",
+            "station_group_tables" => "https://cdn.snowobs.com/group-tables-prod",
             "station_group_tables_config" => false,
             "custom_external_modal_links" => false
         ];
@@ -139,7 +139,7 @@ class AvalancheAPI
     *   Description: Weather charts and maps - registeres necessary assets and components
     *   @return $output - the results of the import
     */
-    public function getNWACTables($table_name)
+    public function getGroupTables($table_name)
     {
         return $this->renderView(
             __DIR__ . DIRECTORY_SEPARATOR . 'views/group_table.php',
@@ -147,7 +147,8 @@ class AvalancheAPI
                 'center_id' => $this->centerID,
                 'token' => $this->token,
                 'station_group_tables' => $this->tableBaseUrl,
-                'station_group_tables_config' => $this->groupTablesConfig[$table_name]
+                'station_group_tables_config' => $this->groupTablesConfig[$table_name],
+                'group_table_name' => $table_name
             ]
         );
     }
