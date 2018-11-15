@@ -6,9 +6,12 @@
 class AvalancheAPI
 {
     private $baseURL;
-    private $version;
+    private $api_version;
     private $centerID;
     private $token;
+
+    // AvalancheAPI Client version
+    public $version = '0.2.1';
 
     public function __construct()
     {
@@ -24,7 +27,7 @@ class AvalancheAPI
         $this->baseURL = (isset($config['avy_org'])) ? $config['avy_org'] : $apiDefaults['avy_org'];
         $this->centerID = $config['center_id'];
         $this->token = $config['token'];
-        $this->version = "v1";
+        $this->api_version = "v1";
         $this->wxBaseUrl = (isset($config['wx_base_url'])) ? $config['wx_base_url'] : $apiDefaults['wx_maps'];
         $this->tableBaseUrl = (isset($config['station_group_tables'])) ? $config['station_group_tables'] : $apiDefaults['station_group_tables'];
         $this->groupTablesConfig = (isset($config['station_group_tables_config'])) ? $config['station_group_tables_config'] : $apiDefaults['station_group_tables_config'];
@@ -40,7 +43,7 @@ class AvalancheAPI
     */
     private function curl($route, $data = null)
     {
-        $url = $this->baseURL . "/" . $this->version . "/" . $route;
+        $url = $this->baseURL . "/" . $this->api_version . "/" . $route;
 
         // create curl resource
         $ch = curl_init();
