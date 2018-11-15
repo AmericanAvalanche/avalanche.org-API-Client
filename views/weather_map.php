@@ -32,10 +32,11 @@
 <script type='text/javascript'>
 
     const token = "<?= $params['token']; ?>";
+		const config = <?= json_encode($params); ?>;
     var map;
     window.onload = function () {
         map = new soMap();
-        map.buildMap(token, false);
+        map.buildMap(token, false, config);
     };
 
 </script>
