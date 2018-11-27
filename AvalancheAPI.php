@@ -20,8 +20,8 @@ class AvalancheAPI
             "wx_maps" => "https://cdn.snowobs.com/nac-prod",
             "station_group_tables" => "https://cdn.snowobs.com/group-tables-prod",
             "station_group_tables_config" => false,
-            "custom_external_modal_links" => false
-            "wx_map_config" => false
+            "custom_external_modal_links" => false,
+            "wx_map_zones" => false
         ];
 
         $config = require __DIR__ . '/config.php';
