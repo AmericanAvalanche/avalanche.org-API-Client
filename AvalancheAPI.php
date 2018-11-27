@@ -136,7 +136,7 @@ class AvalancheAPI
                 'center_id' => $this->centerID,
                 'token' => $this->token,
                 'wx_base_url' => $this->wxBaseUrl,
-                'wx_map_zones' -> $this->wxMapZones,
+                'wx_map_zones' => $this->wxMapZones,
                 'external_modal_links' => $this->externalModalLinks
             ]
         );
