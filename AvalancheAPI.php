@@ -21,6 +21,7 @@ class AvalancheAPI
             "station_group_tables" => "https://cdn.snowobs.com/group-tables-prod",
             "station_group_tables_config" => false,
             "custom_external_modal_links" => false
+            "wx_map_config" => false
         ];
 
         $config = require __DIR__ . '/config.php';
@@ -32,6 +33,8 @@ class AvalancheAPI
         $this->tableBaseUrl = (isset($config['station_group_tables'])) ? $config['station_group_tables'] : $apiDefaults['station_group_tables'];
         $this->groupTablesConfig = (isset($config['station_group_tables_config'])) ? $config['station_group_tables_config'] : $apiDefaults['station_group_tables_config'];
         $this->externalModalLinks = (isset($config['custom_external_modal_links'])) ? $config['custom_external_modal_links'] : $apiDefaults['custom_external_modal_links'];
+        $this->externalModalLinks = (isset($config['custom_external_modal_links'])) ? $config['custom_external_modal_links'] : $apiDefaults['custom_external_modal_links'];
+        $this->wxMapZones = (isset($config['wx_map_zones'])) ? $config['wx_map_zones'] : $apiDefaults['wx_map_zones'];
     }
 
     /**
@@ -133,6 +136,7 @@ class AvalancheAPI
                 'center_id' => $this->centerID,
                 'token' => $this->token,
                 'wx_base_url' => $this->wxBaseUrl,
+                'wx_map_zones' -> $this->wxMapZones,
                 'external_modal_links' => $this->externalModalLinks
             ]
         );
