@@ -1,10 +1,17 @@
 # avalanche.org-API-Client
-A client to interact with the avalanche.org API. The only requirement is that your server has CURL and is running php version 5.6+
+A client to interact with the avalanche.org API.
 
 Current functionality includes:
 - [Forecast map](#forecast-map) - your avalanche center region with zones and danger ratings
 - [Weather map](#weather-map) - weather station map, table, time series
 - [Grouped weather table](#grouped-weather-table) - showing multiple weather stations in a single table
+
+## Requirements
+
+- PHP version > 5.6
+- Curl
+- jQuery loaded on pages
+
 
 ## Configuration
 
