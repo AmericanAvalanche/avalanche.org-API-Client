@@ -107,10 +107,10 @@ The following configuration options are modified in the configuration file `conf
   - Defaults to the production weather maps to be used on public facing website
   - Changing allows testing of features in development, coordinate with National Avalanche Center to change
 - **`wx_map_zones`**, *Optional*
-  - Url to a publicly accessable kml file that defines alternate polygons for table grouping
+  - Url to a publicly accessible kml file that defines alternate polygons for table grouping
   - Group title and order is controlled by polygon name and order in kml file
 - **`custom_external_modal_links`**, *Optional*
-  - Allows custom links to be disaplyed inside the station modal
+  - Allows custom links to be displayed inside the station modal
   - Will open links in new window
 
 ## Map setup
