@@ -1,11 +1,12 @@
 # avalanche.org-API-Client
+
 A client to interact with the avalanche.org API.
 
 Current functionality includes:
+
 - [Forecast map](#forecast-map) - your avalanche center region with zones and danger ratings
 - [Weather map](#weather-map) - weather station map, table, time series
 - [Grouped weather table](#grouped-weather-table) - showing multiple weather stations in a single table
-
 
 ## Requirements
 
@@ -26,7 +27,6 @@ return [
 ];
 ```
 
-
 # Forecast map
 
 ## Default usage
@@ -43,7 +43,7 @@ $map = $api->getMap();
 
 ```html
 <!-- Now echo $map variable into the containing div in which the map should be displayed -->
-<div class='map-div'><?= $map; ?></div>
+<div class="map-div"><?= $map; ?></div>
 ```
 
 ## Optional customizations
@@ -69,6 +69,7 @@ $map = $api->getMap([
 - map_height: number, in pixels
 
 ## Updating your forecast
+
 Note: you must have already coordinated with avalanche.org and setup the necessary data sharing files in order for this to work.
 
 ```php
@@ -88,6 +89,7 @@ The remote weather station map displays weather station data for the forecast ar
 **Note**: you must have already coordinated with the National Avalanche Center to obtain access to the weather maps API and received a token.
 
 ## Configuration
+
 The following configuration options are modified in the configuration file `config.php` for the `avalanche.org-API-Client`.
 
 ```php
@@ -110,13 +112,13 @@ The following configuration options are modified in the configuration file `conf
   - By default, the weather table will group stations by the forecast zone boundaries
 - **`token`**
   - Weather maps token obtained from the National Avalanche Center
-- **`wx_maps`**, *Optional*
+- **`wx_maps`**, _Optional_
   - Defaults to the production weather maps to be used on public facing website
   - Changing allows testing of features in development, coordinate with National Avalanche Center to change
-- **`wx_map_zones`**, *Optional*
+- **`wx_map_zones`**, _Optional_
   - Url to a publicly accessible kml file that defines alternate polygons for table grouping
   - Group title and order is controlled by polygon name and order in kml file
-- **`custom_external_modal_links`**, *Optional*
+- **`custom_external_modal_links`**, _Optional_
   - Allows custom links to be displayed inside the station modal
   - Will open links in new window
 
@@ -138,9 +140,16 @@ To setup the map, login to [avalanche.org](https://avalanche.org/) and go to the
   - Inline editing of `Long Name`, `Tab` and `Rounding` are available
   - `Show Variable`, controls the what variables are shown, if green will show the variable on the map, if red will not show this variable
   - Submit will submit the table and save changes
-
+- **Webcams**
+  - Right click on the map to place a webcam
+  - Left click on the new (or existing) webcam to bring up the webcam form modal
+  - Provide a title to the webcam which will show on hover
+  - The "Image Information" card is the name and image url for the webcam
+  - "Add Another Image" will add additional webcam images to the modal
+  - Click "Save Webcam" to save or "Delete Webcam" to delete
 
 ## Usage
+
 If the map has not been setup on [avalanche.org](https://avalanche.org/), it will default to the SNFAC forecast zone until the map has been properly configured for a particular avalanche center.
 
 ```php
@@ -154,10 +163,10 @@ $wxMap = $api->getWeatherMap();
 
 ```html
 <!-- Now echo $wxMap variable into the containing div in which the map should be displayed -->
-<div class='map-div'><?= $wxMap; ?></div>
+<div class="map-div"><?= $wxMap; ?></div>
 
 <!-- or -->
-<div class='map-div'><?= echo $wxMap; ?></div>
+<div class="map-div"><?= echo $wxMap; ?></div>
 ```
 
 # Grouped weather table
@@ -165,6 +174,7 @@ $wxMap = $api->getWeatherMap();
 **Note**: you must have already coordinated with the National Avalanche Center to obtain access to the weather maps API and received a token.
 
 ## Configuration
+
 If weather station grouping is desired, put the following configuration in the configuration file `config.php` for the `avalanche.org-API-Client`.
 
 ```php
@@ -198,6 +208,5 @@ $wxTable = $api->getGroupTables({table_name});
 
 ```html
 <!-- Now echo $wxTable variable into the containing div in which the table should be displayed -->
-<div class='table-div'><?= $wxTable; ?></div>
-
+<div class="table-div"><?= $wxTable; ?></div>
 ```
