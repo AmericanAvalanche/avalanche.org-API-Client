@@ -1,19 +1,47 @@
 # API User Guide
 
-The public API provides access to the daily avalanche forecast in the US. This information should be treated as a summary, and for the full avalanche forecast see the individual avalanche center websites.
+The public API provides access to daily backcountry avalanche danger ratings for specific geographic areas in the US. These areas generally correspond with mountainous regions which see high recreational use. 
 
-## How to interpret the avalanche forecast
+The data is limited to the danger level on a scale of 1 - 5 as defined in the North American Avalanche Danger Scale. The full avalanche forecast(s) can be accessed through individual avalanche center websites.
+
+Avalanche.org collects and distributes this data from 20 independent forecasting operations working under a collective initiative. As a result, it is very important that 3rd party use does not somehow inadvertently change the intent, understanding, or accuracy of the information -- doing so could jeopardize the collective. 
+
+For example, because avalanche danger changes on a day-to-day basis, danger rating displays must be published and expired accordingly. 
+
+## Backcountry Avalanche Forecasting in the US
 More information can be found on avalanche.org:
 
-* Danger Scale: https://avalanche.org/avalanche-encyclopedia/danger-scale/
-* Avalanche education: https://avalanche.org/avalanche-education/
-* National Map: https://avalanche.org/
+* Avalanche Danger Scale: https://avalanche.org/avalanche-encyclopedia/danger-scale/
 * Avalanche centers in the US: https://avalanche.org/us-avalanche-centers/
+* National Avalanche Danger Map: https://avalanche.org/
 
 ## Update cadence
 Avalanche centers who publish a daily forecast will typically do so once a day in the morning. It is recommended to check often during the morning hours (6-10am Mountain Time). The season varies by year and avalanche center, but generally follows December - April.
 
-Some avalanche centers publish information without a danger rating. These will show up as `no danger` throughout the season, but general backcountry conditions can be found by navigating to their site.
+Some avalanche centers publish summary information without a danger rating. These will show up as `no danger` throughout the season, but general backcountry conditions can be found by navigating to their site
+
+## Avalanche Danger Map Guideline: 
+
+Resolution - 1:25,000
+
+Participating organizations are represented using polygons which depict the area for which information is available and representative. These polygons display danger ratings by color, or the grey scale which indicates summary information is available.
+
+Recommended style guidelines: 
+* Polygons are drawn with a black line, with the following exception: 
+* Polygons are outlined in a thick red line red during periods of EXTREME danger. 
+* Polygons display the highest danger rating assigned for that zone during a 24hr period.
+* Colors correspond to the NAADS, with the following exceptions: 
+** Grey shading with blue outline means  “Avalanche Information Available - No Rating” 
+** No shading (just the black outline) means “No information Available”.
+
+Associated information for polygons:  
+* Zone name, date issued and expiration, Avalanche Center name
+* Avalanche danger (color, icon, nomenclature), or summary statement
+
+Associated travel advice
+* Link to Forecast or Summary Product (this opens AC forecast page)
+* If no information is available, link to AC homepage
+
 
 # Map Layer
 
