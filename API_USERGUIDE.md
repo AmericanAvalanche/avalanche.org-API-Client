@@ -11,7 +11,7 @@ More information can be found on avalanche.org:
 * Avalanche centers in the US: https://avalanche.org/us-avalanche-centers/
 
 ## Update cadence
-Avalanche centers who publish a daily forecast will typically do so once a day in the morning. It is recommended to check often during the morning hours (6-10am Mountain Time). The season varies year to year and by avalanche center, but generally follows December - April.
+Avalanche centers who publish a daily forecast will typically do so once a day in the morning. It is recommended to check often during the morning hours (6-10am Mountain Time). The season varies by year and avalanche center, but generally follows December - April.
 
 Some avalanche centers publish information without a danger rating. These will show up as `no danger` throughout the season, but general backcountry conditions can be found by navigating to their site.
 
