@@ -1,10 +1,12 @@
 # API User Guide
 
-The public API provides access to the daily avalanche forecast in the US. This information should be treted as a summary, and for the full avalanche forecast see the individual avalanche center websites.
+The public API provides access to the daily avalanche forecast in the US. This information should be treated as a summary, and for the full avalanche forecast see the individual avalanche center websites.
 
 ## How to interpret the avalanche forecast
 More information can be found on avalanche.org:
+
 Danger Scale: https://avalanche.org/avalanche-encyclopedia/danger-scale/
+
 General avalanche education: https://avalanche.org/avalanche-education/
 
 ## Update cadence
@@ -70,21 +72,21 @@ curl https://api.avalanche.org/v2/public/products/map-layer
 
 The above follows the <a href='https://geojson.org/'>geojson spec</a>, and a description of the properties are:
 
-    name: Zone name
-    center: Avalanche center name
-    center_link: Link to avalanche center website
-    timezone: Timezone that the avalanche center uses
-    center_id: The avalanche center acronym 
-    state: The state which the avalanche center largely operates in
-    travel_advice: The standard travel advice for the given danger rating
-    danger: Textual representation of the danger rating
-    danger_level: Numerical of the danger rating
-    color: The danger rating color
-    stroke: The danger rating outline color
-    font_color: The font color which contrasts with the danger rating color
-    link: Link to the forecast page for the given zone
-    start_date: When the forecast was issued (ISO)
-    end_date: When the forecast expires (ISO)
-    warning: Populated if an avalanche warning is issued for the given zone
+name: Zone name
+center: Avalanche center name
+center_link: Link to avalanche center website
+timezone: Timezone that the avalanche center uses
+center_id: The avalanche center acronym 
+state: The state which the avalanche center largely operates in
+travel_advice: The standard travel advice for the given danger rating
+danger: Textual representation of the danger rating
+danger_level: Numerical of the danger rating
+color: The danger rating color
+stroke: The danger rating outline color
+font_color: The font color which contrasts with the danger rating color
+link: Link to the forecast page for the given zone
+start_date: When the forecast was issued (ISO)
+end_date: When the forecast expires (ISO)
+warning: Populated if an avalanche warning is issued for the given zone
 
 
