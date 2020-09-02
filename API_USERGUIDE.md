@@ -15,7 +15,7 @@ Some avalanche centers publish information without a danger rating. These will s
 
 # Map Layer
 
-A geojson representation of the avalanche center(s) and the current avalanche forecast.
+A <a href='https://geojson.org/'>geojson</a> representation of the avalanche center(s) and the current avalanche forecast.
 
 `GET /v2/public/products/map-layer`
 
@@ -69,7 +69,7 @@ curl https://api.avalanche.org/v2/public/products/map-layer
                         ],
 ```
 
-The above follows the <a href='https://geojson.org/'>geojson spec</a>, and a description of the properties are:
+A description of the properties are:
 
 * name: Zone name
 * center: Avalanche center name
