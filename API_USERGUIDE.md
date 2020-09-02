@@ -7,6 +7,8 @@ More information can be found on avalanche.org:
 
 * Danger Scale: https://avalanche.org/avalanche-encyclopedia/danger-scale/
 * Avalanche education: https://avalanche.org/avalanche-education/
+* National Map: https://avalanche.org/
+* Avalanche centers in the US: https://avalanche.org/us-avalanche-centers/
 
 ## Update cadence
 Avalanche centers who publish a daily forecast will typically do so once a day in the morning. It is recommended to check often during the morning hours (6-10am Mountain Time). The season varies year to year and by avalanche center, but generally follows December - April.
