@@ -31,8 +31,8 @@ Recommended style guidelines:
 * Polygons are outlined in a thick red line red during periods of EXTREME danger. 
 * Polygons display the highest danger rating assigned for that zone during a 24hr period.
 * Colors correspond to the NAADS, with the following exceptions: 
-** Grey shading with blue outline means  “Avalanche Information Available - No Rating” 
-** No shading (just the black outline) means “No information Available”.
+    * Grey shading with blue outline means  “Avalanche Information Available - No Rating” 
+    * No shading (just the black outline) means “No information Available”.
 
 Associated information for polygons:  
 * Zone name, date issued and expiration, Avalanche Center name
