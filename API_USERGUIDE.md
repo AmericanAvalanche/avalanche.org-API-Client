@@ -118,54 +118,6 @@ A description of the properties are:
 * end_date: When the forecast expires (ISO)
 * warning: Populated if an avalanche warning is issued for the given zone
 
-## Map layer by avalanche center
-
-A <a href='https://geojson.org/'>geojson</a> representation for the given avalanche centers and the current avalanche forecast.
-
-`GET /v2/public/products/map-layer/{avalanche_center_id}`
-
-## Request
-```bash
-
-curl https://api.avalanche.org/v2/public/products/map-layer/SNFAC
-```
-
-## Response
-
-```json
-{
-    "type": "FeatureCollection",
-    "features": [
-        {
-            "type": "Feature",
-            "id": 301,
-            "properties": {
-                "name": "Galena Summit & Eastern Mtns",
-                "center": "Sawtooth Avalanche Center",
-                "timezone": "America/Denver",
-                "state": "ID",
-                "rating": 1,
-                "travel_advice": "Generally safe avalanche conditions. Watch for unstable snow on isolated terrain features.",
-                "danger": "low",
-                "danger_level": 1,
-                "color": "#55b64f",
-                "stroke": "#484848",
-                "font_color": "#ffffff",
-                "link": "https://www.sawtoothavalanche.com/forecasts/#/galena-summit-&-eastern-mtns",
-                "start_date": "2020-09-02T16:55:00",
-                "end_date": "2020-09-03T12:00:00",
-                "warning": {
-                    "product": null,
-                    "start_date": null,
-                    "end_date": null,
-                    "reason": null
-                }
-            },
-            "geometry": {
-                "type": "Polygon",
-                "coordinates": [
-
-```
 
 ## Map layer by avalanche center
 
