@@ -169,7 +169,7 @@ curl https://api.avalanche.org/v2/public/products/map-layer/SNFAC
 
 ## Map layer by avalanche center
 
-A <a href='https://geojson.org/'>geojson</a> representation for the given avalanche centers and the current avalanche forecast.
+A <a href='https://geojson.org/'>geojson</a> representation for the given avalanche center and the current avalanche forecast.
 
 `GET /v2/public/products/map-layer/{avalanche_center_id}`
 
