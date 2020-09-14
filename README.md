@@ -1,6 +1,6 @@
-# avalanche.org-API-Client
+# avalanche.org-API-SDK
 
-A client to interact with the avalanche.org API.
+An SDK to interact with the avalanche.org API. For direct API access, see the <a href ='API_USERGUIDE.md'>API User guide</a>
 
 Current functionality includes:
 
